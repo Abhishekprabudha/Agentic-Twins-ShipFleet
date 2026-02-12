@@ -1,0 +1,45 @@
+{
+  "version": 8,
+  "name": "Hybrid Satellite + Hillshade (tuned)",
+  "sources": {
+    "satellite": {
+      "type": "raster",
+      "tiles": [
+        "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=14rlmJVZB3zurgzbKCkW"
+      ],
+      "tileSize": 512,
+      "attribution": "© MapTiler © OpenStreetMap contributors"
+    },
+    "terrain-dem": {
+      "type": "raster-dem",
+      "tiles": [
+        "https://api.maptiler.com/tiles/terrain-rgb/{z}/{x}/{y}.png?key=14rlmJVZB3zurgzbKCkW"
+      ],
+      "tileSize": 256
+    }
+  },
+  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=14rlmJVZB3zurgzbKCkW",
+  "layers": [
+    {
+      "id": "satellite",
+      "type": "raster",
+      "source": "satellite",
+      "paint": {
+        "raster-saturation": -0.15,
+        "raster-contrast": 0.12,
+        "raster-brightness-min": 0.02,
+        "raster-brightness-max": 0.88
+      }
+    },
+    {
+      "id": "hillshade",
+      "type": "hillshade",
+      "source": "terrain-dem",
+      "paint": {
+        "hillshade-exaggeration": 0.6,
+        "hillshade-shadow-color": "rgba(0,0,0,0.33)",
+        "hillshade-highlight-color": "rgba(255,255,255,0.33)"
+      }
+    }
+  ]
+}
