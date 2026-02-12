@@ -426,7 +426,7 @@ function drawShips() {
     let theta = (bearing * Math.PI) / 180;
 
     // Sprite facing correction (90°). If it looks wrong, change sign or remove.
-    theta += Math.PI / 2;
+    theta -= Math.PI / 2;
 
     drawShipAt({ x, y }, theta);
   }
@@ -758,3 +758,4 @@ map.on("load", async () => {
   speak("Type disrupt, correct, normal, add ports, or hub Hong Kong to drive the sea ports simulation.");
   requestAnimationFrame(tick);
 });
+
